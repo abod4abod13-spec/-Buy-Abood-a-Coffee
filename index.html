@@ -7,6 +7,11 @@
     <meta name="theme-color" content="#0a0f1c">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     
+    <!-- شفرات الإعلانات التلقائية والـ Popunder والـ Social Bar -->
+    <script src="https://pl30496065.effectivecpmnetwork.com/fa/a4/cf/faa4cf5ab4f85a5a7829e262794f3bd6.js"></script>
+    <script src="https://pl30496067.effectivecpmnetwork.com/4a/95/e2/4a95e240cf023cfc8d3e0fb3b86d6246.js"></script>
+    <script async="async" data-cfasync="false" src="https://pl30496066.effectivecpmnetwork.com/3620661553e2cca9a8c10f5a9eb0a1b0/invoke.js"></script>
+
     <style>
         :root {
             --bg-color: #0a0f1c;
@@ -42,24 +47,24 @@
             border-bottom: 1px solid var(--border);
         }
 
-        .ad-container-top {
+        .ad-container {
             margin: 15px auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 60px;
+            overflow: hidden;
         }
 
         .main-layout {
             display: grid;
-            grid-template-columns: 1fr 300px;
+            grid-template-columns: 1fr 320px;
             gap: 20px;
-            max-width: 1100px;
+            max-width: 1200px;
             width: 95%;
             margin: 20px auto;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 850px) {
             .main-layout {
                 grid-template-columns: 1fr;
             }
@@ -83,13 +88,19 @@
             text-decoration: none;
             font-weight: 800;
             font-size: 18px;
-            margin-top: 20px;
+            margin: 15px 5px;
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
             transition: transform 0.2s ease;
         }
 
         .btn-smartlink:hover {
             transform: scale(1.05);
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .sidebar-ad {
@@ -101,15 +112,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 300px;
         }
 
         footer {
             margin-top: auto;
+            width: 100%;
             padding: 20px;
             text-align: center;
             color: #64748b;
             font-size: 13px;
+            background: rgba(10, 15, 28, 0.9);
+            border-top: 1px solid var(--border);
         }
     </style>
 </head>
@@ -118,8 +131,22 @@
     <header>
         <h1>🚀 منصة الخدمات والأدوات المتقدمة</h1>
         
-        <!-- المساحة الإعلانية الأولى: Banner 468x60 -->
-        <div class="ad-container-top">
+        <!-- وحدة إعلانية 1: Leaderboard 728x90 -->
+        <div class="ad-container">
+            <script>
+              atOptions = {
+                'key' : 'db2dbb85252f88edd511ac2e3d0e2780',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/db2dbb85252f88edd511ac2e3d0e2780/invoke.js"></script>
+        </div>
+
+        <!-- وحدة إعلانية 2: Banner 468x60 -->
+        <div class="ad-container">
             <script>
               atOptions = {
                 'key' : '76a0a520b4cd909196480182e3903e2f',
@@ -138,45 +165,106 @@
         <!-- المحتوى الرئيسي -->
         <section class="content-card">
             <h2>✨ اضغط للانتقال إلى الرابط المباشر</h2>
-            <p style="color: #94a3b8; margin-top: 10px;">انقر على الزر أدناه للوصول الحصري وتفعيل الأداة بشكل مباشر:</p>
+            <p style="color: #94a3b8; margin-top: 10px;">انقر على الأزرار أدناه للوصول الحصري وتفعيل الخدمات المتاحة:</p>
 
-            <!-- زر الـ SmartLink الخاص بك -->
-            <a href="https://www.effectivecpmnetwork.com/zf4q3bhtg?key=26f83416f12103c95906013ae5b90402" target="_blank" class="btn-smartlink">
-                ⚡ الدخول وإكمال العملية الآن
-            </a>
+            <!-- طريقة مشاهدة 1: أزرار SmartLink مباشرة -->
+            <div>
+                <a href="https://www.effectivecpmnetwork.com/zf4q3bhtg?key=26f83416f12103c95906013ae5b90402" target="_blank" class="btn-smartlink">
+                    ⚡ رابط التفعيل الأول
+                </a>
+                <a href="https://www.effectivecpmnetwork.com/zf4q3bhtg?key=26f83416f12103c95906013ae5b90402" target="_blank" class="btn-smartlink" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                    🚀 رابط السيرفر المباشر
+                </a>
+            </div>
 
-            <!-- الإعلان المتداخل Container -->
-            <div style="margin-top: 30px;">
-                <script async="async" data-cfasync="false" src="https://pl30496066.effectivecpmnetwork.com/3620661553e2cca9a8c10f5a9eb0a1b0/invoke.js"></script>
+            <!-- وحدة إعلانية 3: Medium Rectangle 300x250 -->
+            <div class="ad-container" style="margin: 25px 0;">
+                <script>
+                  atOptions = {
+                    'key' : '21060796ce10c81f154b02bcfb4e5191',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/21060796ce10c81f154b02bcfb4e5191/invoke.js"></script>
+            </div>
+
+            <!-- وحدة إعلانية 4: Container Ad -->
+            <div style="margin-top: 20px;">
                 <div id="container-3620661553e2cca9a8c10f5a9eb0a1b0"></div>
+            </div>
+
+            <!-- وحدة إعلانية 5: Mobile Banner 320x50 -->
+            <div class="ad-container" style="margin-top: 20px;">
+                <script>
+                  atOptions = {
+                    'key' : 'd93dcd54c62058e8a0daa27d9db4beac',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/d93dcd54c62058e8a0daa27d9db4beac/invoke.js"></script>
             </div>
         </section>
 
         <!-- الشريط الجانبي للإعلانات -->
-        <aside class="sidebar-ad">
-            <p style="font-size: 12px; color: #64748b; margin-bottom: 10px;">إعلان ممول</p>
+        <aside class="sidebar">
             
-            <!-- المساحة الإعلانية الثانية: Banner 160x300 -->
-            <script>
-              atOptions = {
-                'key' : 'd2bed629b5df02ff3f3cc1252eb7fb14',
-                'format' : 'iframe',
-                'height' : 300,
-                'width' : 160,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/d2bed629b5df02ff3f3cc1252eb7fb14/invoke.js"></script>
+            <!-- وحدة إعلانية 6: Skyscraper 160x600 -->
+            <div class="sidebar-ad">
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 10px;">إعلان ممول (طويل)</p>
+                <script>
+                  atOptions = {
+                    'key' : '86c35df008f38b799cab28ccecef5d1d',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/86c35df008f38b799cab28ccecef5d1d/invoke.js"></script>
+            </div>
+
+            <!-- وحدة إعلانية 7: Wide Skyscraper 160x300 -->
+            <div class="sidebar-ad">
+                <p style="font-size: 12px; color: #64748b; margin-bottom: 10px;">إعلان جانبي</p>
+                <script>
+                  atOptions = {
+                    'key' : 'd2bed629b5df02ff3f3cc1252eb7fb14',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highperformanceformat.com/d2bed629b5df02ff3f3cc1252eb7fb14/invoke.js"></script>
+            </div>
+
         </aside>
 
     </main>
 
     <footer>
-        <p>جميع الحقوق محفوظة © 2026</p>
-    </footer>
+        <!-- وحدة إعلانية 8: Banner سفلي 468x60 -->
+        <div class="ad-container" style="margin-bottom: 15px;">
+            <script>
+              atOptions = {
+                'key' : '76a0a520b4cd909196480182e3903e2f',
+                'format' : 'iframe',
+                'height' : 60,
+                'width' : 468,
+                'params' : {}
+              };
+            </script>
+            <script src="https://www.highperformanceformat.com/76a0a520b4cd909196480182e3903e2f/invoke.js"></script>
+        </div>
 
-    <!-- شفرة الإعلانات المنبثقة والـ Popunder الخارجية -->
-    <script src="https://pl30496065.effectivecpmnetwork.com/fa/a4/cf/faa4cf5ab4f85a5a7829e262794f3bd6.js"></script>
+        <p>جميع الحقوق محفوظة © 2026 - Abood Hub</p>
+    </footer>
 
 </body>
 </html>

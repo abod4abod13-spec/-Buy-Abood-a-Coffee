@@ -3,230 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abood Support & Links Hub</title>
-    <meta name="theme-color" content="#0a0f1c">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
-    
+    <title>منصة دعم الموقع والأرباح</title>
     <style>
         :root {
-            --bg-color: #0a0f1c;
-            --card-bg: rgba(19, 27, 46, 0.9);
-            --primary: #3b82f6;
-            --accent: #10b981;
-            --text: #ffffff;
-            --border: rgba(255, 255, 255, 0.1);
+            --primary-color: #4f46e5;
+            --secondary-color: #818cf8;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #22c55e;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Cairo', sans-serif;
-        }
-
         body {
+            font-family: 'Cairo', Tahoma, sans-serif, Arial;
             background-color: var(--bg-color);
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        header {
-            width: 100%;
-            padding: 15px;
-            text-align: center;
-            background: rgba(10, 15, 28, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .ad-row {
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 15px 0;
+            min-height: 100vh;
         }
-
-        .main-container {
-            max-width: 1200px;
-            width: 95%;
-            margin: 20px auto;
-            display: grid;
-            grid-template-columns: 200px 1fr 200px;
-            gap: 15px;
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-
-        @media (max-width: 900px) {
-            .main-container {
-                grid-template-columns: 1fr;
-            }
+        h1 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            color: #e2e8f0;
         }
-
-        .side-banner {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
+        p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .ad-container {
+            margin: 20px 0;
+            padding: 15px;
+            background: #334155;
             border-radius: 12px;
-            padding: 10px;
+            border: 2px dashed var(--secondary-color);
+            position: relative;
+            min-height: 120px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
         }
-
-        .content-box {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
+        .guide-box {
+            font-size: 18px;
+            font-weight: bold;
+            color: #facc15;
+            margin-bottom: 10px;
+            animation: bounce 1s infinite alternate;
         }
-
-        .btn-smartlink {
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+        .ad-link-btn {
             display: inline-block;
-            background: linear-gradient(135deg, #10b981, #059669);
+            background-color: var(--primary-color);
             color: white;
-            padding: 14px 28px;
-            border-radius: 10px;
+            padding: 12px 24px;
+            border-radius: 8px;
             text-decoration: none;
-            font-weight: 800;
+            font-weight: bold;
             font-size: 16px;
-            margin: 15px 0;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+            transition: background 0.3s;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
         }
-
-        footer {
-            margin-top: auto;
+        .ad-link-btn:hover {
+            background-color: #4338ca;
+        }
+        .stats-box {
+            background: #1e1b4b;
+            border: 1px solid #312e81;
+            border-radius: 12px;
             padding: 20px;
+            margin-top: 20px;
+            text-align: right;
+        }
+        .stats-box h3 {
+            color: #4ade80;
+            margin-top: 0;
             text-align: center;
-            color: #64748b;
+        }
+        .stat-item {
+            margin: 10px 0;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .stat-label {
+            color: #cbd5e1;
+        }
+        .stat-value {
+            color: #f8fafc;
+            font-weight: bold;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .refresh-note {
+            margin-top: 15px;
             font-size: 13px;
+            color: #fbbf24;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🚀 مركز دعم مشاريع عبدالله</h1>
-        
-        <!-- إعلان 1: Leaderboard (728x90) -->
-        <div class="ad-row">
-            <script>
-              atOptions = {
-                'key' : '90248e83336c21b1f6b8c49fec36fb7f',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/90248e83336c21b1f6b8c49fec36fb7f/invoke.js"></script>
+<div class="container">
+    <h1>دعم الموقع ومشاهدة الإعلانات</h1>
+    <p>يرجى إكمال مشاهدة الإعلانات التالية لدعم استمرار الموقع وتطويره</p>
+
+    <!-- مرحلة عرض الإعلانات -->
+    <div id="step-container">
+        <div class="guide-box" id="guide-text">👈 دوس هنا للانتقال للإعلان الأول</div>
+        <div class="ad-container">
+            <!-- مكان إعلانات أدسترا (Adsterra) -->
+            <!-- يمكنك استبدال الروابط أدناه بروابط إعلانات Adsterra الخاصة بك -->
+            <div id="ad-slot-wrapper">
+                <a href="https://www.example.com/adsterra_old_link" id="current-ad-link" class="ad-link-btn" target="_blank" onclick="handleAdClick()">عرض الإعلان الآن 🚀</a>
+            </div>
         </div>
-
-        <!-- إعلان 2: Banner (468x60) -->
-        <div class="ad-row">
-            <script>
-              atOptions = {
-                'key' : '018372b686b3213e43fcec9c2995a55f',
-                'format' : 'iframe',
-                'height' : 60,
-                'width' : 468,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/018372b686b3213e43fcec9c2995a55f/invoke.js"></script>
-        </div>
-    </header>
-
-    <div class="main-container">
-
-        <!-- العمود الجانبي الأيمن -->
-        <aside class="side-banner">
-            <!-- إعلان 3: Skyscraper (160x600) -->
-            <script>
-              atOptions = {
-                'key' : '0eea270045f2325c37bed20c50a91b52',
-                'format' : 'iframe',
-                'height' : 600,
-                'width' : 160,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/0eea270045f2325c37bed20c50a91b52/invoke.js"></script>
-        </aside>
-
-        <!-- المحتوى الأوسط -->
-        <main class="content-box">
-            <h2>✨ رابط الانتقال المباشر</h2>
-            <p style="color: #94a3b8; margin-top: 8px;">اضغط على الزر أدناه للانتقال المباشر:</p>
-
-            <!-- رابط SmartLink الخاص بك -->
-            <a href="https://www.effectivecpmnetwork.com/v211a62503?key=e4a8339043403ab9de463236f63f9f52" target="_blank" class="btn-smartlink">
-                ⚡ متابعة إلى المحتوى
-            </a>
-
-            <!-- إعلان 4: Medium Rectangle (300x250) -->
-            <div class="ad-row">
-                <script>
-                  atOptions = {
-                    'key' : 'ae4c94df48212bebc17e8cb68d4ba5c8',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://www.highperformanceformat.com/ae4c94df48212bebc17e8cb68d4ba5c8/invoke.js"></script>
-            </div>
-
-            <!-- إعلان 5: Container Ads -->
-            <div class="ad-row">
-                <script async="async" data-cfasync="false" src="https://pl30519626.effectivecpmnetwork.com/864d9563d546e4f9ca214be15f66c3ca/invoke.js"></script>
-                <div id="container-864d9563d546e4f9ca214be15f66c3ca"></div>
-            </div>
-
-            <!-- إعلان 6: Mobile Banner (320x50) -->
-            <div class="ad-row">
-                <script>
-                  atOptions = {
-                    'key' : '19caa55cbb03df3ad1f2030dd6449b8f',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://www.highperformanceformat.com/19caa55cbb03df3ad1f2030dd6449b8f/invoke.js"></script>
-            </div>
-        </main>
-
-        <!-- العمود الجانبي الأيسر -->
-        <aside class="side-banner">
-            <!-- إعلان 7: Wide Skyscraper (160x300) -->
-            <script>
-              atOptions = {
-                'key' : '554a2a625fc8c8d967df4f458f904b24',
-                'format' : 'iframe',
-                'height' : 300,
-                'width' : 160,
-                'params' : {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/554a2a625fc8c8d967df4f458f904b24/invoke.js"></script>
-        </aside>
-
+        <div style="font-size: 13px; color: #64748b;" id="progress-indicator">الإعلان 1 من 2</div>
     </div>
 
-    <footer>
-        <p>جميع الحقوق محفوظة © 2026</p>
-    </footer>
+    <!-- مرحلة الانتهاء وعرض الإحصائيات -->
+    <div id="thankyou-container" class="hidden">
+        <div class="stats-box">
+            <h3>🎉 شكراً لك! تم إتمام مشاهدة الإعلانات بنجاح</h3>
+            <div class="stat-item">
+                <span class="stat-label">عدد الإعلانات المشاهدة:</span>
+                <span class="stat-value" id="res-ads-count">2</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">إجمالي الربح التقديري:</span>
+                <span class="stat-value" id="res-earnings">$0.02</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">الوقت الذي قضيته بالموقع:</span>
+                <span class="stat-value" id="res-time">0 دقيقة 0 ثانية</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">عنوان الـ IP لجهازك:</span>
+                <span class="stat-value" id="res-ip">جاري الجلب...</span>
+            </div>
+        </div>
+        <div class="refresh-note">
+            💡 إذا تريد بعد تدعمني سوي Refresh للصفحة وسوي مرة ثانية وشكراً جزيلاً لك! ❤️
+        </div>
+    </div>
+</div>
 
-    <!-- شفرات الإعلانات التفاعلية والـ Popunder بالمجال الخلفي -->
-    <script src="https://pl30519627.effectivecpmnetwork.com/e5/c5/09/e5c5094060e8c40141765dba41971b4d.js"></script>
-    <script src="https://pl30519625.effectivecpmnetwork.com/5d/0b/3f/5d0b3fc0015ab5facc6056eff45603d5.js"></script>
+<script>
+    // إعداد الروابط الإعلانية لـ Adsterra (القديم والجديد)
+    const adsList = [
+        {
+            url: "https://www.profitablecpmrate.com/OLD_ADSTERRA_ID", // ضع رابط أدسترا القديم هنا
+            guide: "👈 دوس هنا لدخول الإعلان الأول (السابق)"
+        },
+        {
+            url: "https://www.profitablecpmrate.com/NEW_ADSTERRA_ID", // ضع رابط أدسترا الجديد هنا
+            guide: "👈 دوس هنا لدخول الإعلان الثاني (الجديد)"
+        }
+    ];
+
+    let currentAdIndex = 0;
+    let startTime = new Date();
+    let userIp = "غير معروف";
+
+    // جلب IP الجهاز تلقائياً
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            userIp = data.ip;
+        })
+        .catch(error => {
+            userIp = "192.168.1.X (محلي)";
+        });
+
+    const guideText = document.getElementById('guide-text');
+    const adLink = document.getElementById('current-ad-link');
+    const progressIndicator = document.getElementById('progress-indicator');
+    const stepContainer = document.getElementById('step-container');
+    const thankyouContainer = document.getElementById('thankyou-container');
+
+    // تحديث الواجهة للإعلان الحالي
+    function updateAdView() {
+        if (currentAdIndex < adsList.length) {
+            guideText.innerText = adsList[currentAdIndex].guide;
+            adLink.href = adsList[currentAdIndex].url;
+            progressIndicator.innerText = `الإعلان ${currentAdIndex + 1} من ${adsList.length}`;
+        }
+    }
+
+    // عند النقر على زر الإعلان
+    function handleAdClick() {
+        // ننتظر قليلاً ثم نتحقق عند عودة المستخدم لتبويب المتصفح أو بعد نقرة ثانية
+        setTimeout(() => {
+            currentAdIndex++;
+            if (currentAdIndex < adsList.length) {
+                updateAdView();
+            } else {
+                showThankYou();
+            }
+        }, 1500); // مهلة بسيطة لضمان فتح الرابط الانتقالي
+    }
+
+    // عرض شاشة الشكر والإحصائيات
+    function showThankYou() {
+        stepContainer.classList.add('hidden');
+        thankyouContainer.classList.remove('hidden');
+
+        // حساب الوقت المستغرق
+        let endTime = new Date();
+        let totalSeconds = Math.floor((endTime - startTime) / 1000);
+        let minutes = Math.floor(totalSeconds / 60);
+        let seconds = totalSeconds % 60;
+
+        document.getElementById('res-ads-count').innerText = adsList.length + " إعلانات";
+        document.getElementById('res-earnings').innerText = "$" + (adsList.length * 0.015).toFixed(3);
+        document.getElementById('res-time').innerText = `${minutes} دقيقة و ${seconds} ثانية`;
+        document.getElementById('res-ip').innerText = userIp;
+    }
+
+    // تحديث الإعلان الأول عند التحميل
+    updateAdView();
+</script>
 
 </body>
 </html>
+

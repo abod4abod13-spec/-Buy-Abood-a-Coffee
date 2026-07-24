@@ -19,7 +19,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 90px; }
 
-        /* شريط إشعار علوي إعلاني */
         .top-notification-ad {
             background: linear-gradient(90deg, #312e81, #1e1b4b);
             color: #fff;
@@ -81,7 +80,16 @@
 
         .status-msg { margin-top: 10px; font-size: 13px; color: #94a3b8; }
 
-        /* إحصائيات عند الانتهاء */
+        .banner-container {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
+        }
+
         .stats-box {
             background: #1e1b4b;
             border: 1px solid #312e81;
@@ -105,7 +113,6 @@
 
         .hidden { display: none !important; }
 
-        /* البانر الثابت بالأسفل */
         .fixed-bottom-ad {
             position: fixed;
             bottom: 0;
@@ -123,7 +130,6 @@
 </head>
 <body>
 
-    <!-- إشعار علوي إعلاني -->
     <div class="top-notification-ad">
         ⚡ منصة دعم عبدالله المباشرة - شاهد الإعلانات لدعم استمرار المشاريع
     </div>
@@ -131,11 +137,25 @@
     <div class="main-wrapper">
         <div class="container">
             <h1>🚀 دعم موقع عبدالله المباشر</h1>
-            <p class="sub-title">إكمال 30 إعلاناً يضمن أعلى نسبة دعم وتطوير للموقع!</p>
+            <p class="sub-title">إكمال 60 إعلاناً يضمن أعلى نسبة دعم وتطوير للموقع!</p>
+
+            <!-- بانر إعلاني علوي إضافي داخل الصفحة -->
+            <div class="banner-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '19caa55cbb03df3ad1f2030dd6449b8f',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/19caa55cbb03df3ad1f2030dd6449b8f/invoke.js"></script>
+            </div>
 
             <!-- مرحلة عرض الإعلانات -->
             <div id="step-container">
-                <div class="guide-box" id="guide-text">👈 دوس هنا لفتح الإعلان الأول</div>
+                <div class="guide-box" id="guide-text">👈 اضغط هنا لفتح الإعلان الأول</div>
                 
                 <div class="ad-action-card">
                     <button id="ad-btn" class="btn-ad" onclick="openAdLink()">فتح الإعلان الآن 🚀</button>
@@ -143,35 +163,39 @@
                 </div>
 
                 <div style="font-size: 14px; font-weight: bold; color: var(--secondary);" id="progress-indicator">
-                    التقدم: 0 / 30 إعلان
+                    التقدم: 0 / 60 إعلان
                 </div>
             </div>
 
-            <!-- شاشة الانتهاء والإحصائيات الحقيقية -->
+            <!-- شاشة الانتهاء والإحصائيات -->
             <div id="thankyou-container" class="hidden">
                 <div class="stats-box">
-                    <h3 style="color: var(--accent); text-align: center; margin-bottom: 15px;">🎉 أسطورة! أكملت كافة الإعلانات الـ 30 بنجاح</h3>
+                    <h3 style="color: var(--accent); text-align: center; margin-bottom: 15px;">🎉 أسطورة! أكملت كافة الإعلانات الـ 60 بنجاح</h3>
                     
                     <div class="stat-item">
                         <span class="stat-label">عدد الإعلانات المؤكدة:</span>
-                        <span class="stat-value" id="res-ads-count">30 / 30</span>
+                        <span class="stat-value" id="res-ads-count">60 / 60</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label">الأرباح الناتجة التقديرية:</span>
-                        <span class="stat-value" id="res-earnings">$0.450 USD</span>
+                        <span class="stat-label">الدولة المستهدفة:</span>
+                        <span class="stat-value" id="res-country">جاري التعرف...</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label">الوقت الذي قضيته داخل الموقع:</span>
+                        <span class="stat-label">الأرباح التقديرية (بناءً على CPM المنطقة):</span>
+                        <span class="stat-value" id="res-earnings">جاري الحساب...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">الوقت الذي قضيته:</span>
                         <span class="stat-value" id="res-time">جاري الحساب...</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-label">عنوان الـ IP لجهازك:</span>
+                        <span class="stat-label">عنوان الـ IP:</span>
                         <span class="stat-value" id="res-ip">جاري الجلب...</span>
                     </div>
                 </div>
 
                 <p style="color: var(--warning); font-size: 13px; margin-top: 15px; line-height: 1.6;">
-                    💡 إذا تريد بعد تدعمني وتربحني أكثر، سوي <b>Refresh (تحديث)</b> للصفحة وكرر العملية مرة ثانية وشكراً جزيلاً لك! ❤️
+                    💡 شكراً لدعمك المستمر! قم بإعادة تحديث الصفحة في وقت لاحق لدعم المزيد من المشاريع.
                 </p>
             </div>
         </div>
@@ -179,7 +203,7 @@
 
     <!-- إعلان بانر أسفل الشاشة ثابت -->
     <div class="fixed-bottom-ad">
-        <script>
+        <script type="text/javascript">
           atOptions = {
             'key' : '19caa55cbb03df3ad1f2030dd6449b8f',
             'format' : 'iframe',
@@ -188,27 +212,42 @@
             'params' : {}
           };
         </script>
-        <script src="https://www.highperformanceformat.com/19caa55cbb03df3ad1f2030dd6449b8f/invoke.js"></script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/19caa55cbb03df3ad1f2030dd6449b8f/invoke.js"></script>
     </div>
 
     <!-- شفرة الإعلانات المنبثقة للـ Popunder -->
     <script src="https://pl30519627.effectivecpmnetwork.com/e5/c5/09/e5c5094060e8c40141765dba41971b4d.js"></script>
 
 <script>
-    const TOTAL_ADS_REQUIRED = 30;
+    const TOTAL_ADS_REQUIRED = 60; // تعديل العدد إلى 60
     let currentAdCount = 0;
     let isAdOpened = false;
     let startTime = new Date();
-    let userIp = "جاري الجلب...";
+    let userIp = "مجهول";
+    let userCountry = "العراق (IQ)";
+    let estimatedCPM = 0.80; // متوسط الـ eCPM لدول الشرق الأوسط
 
-    // رابط الـ SmartLink/Adsterra المباشر الخاص بك
     const adSmartLink = "https://www.effectivecpmnetwork.com/v211a62503?key=e4a8339043403ab9de463236f63f9f52";
 
-    // جلب الـ IP الحقيقي للجهاز
-    fetch('https://api.ipify.org?format=json')
+    // جلب الـ IP والدولة تلقائياً
+    fetch('https://ipapi.co/json/')
         .then(res => res.json())
-        .then(data => { userIp = data.ip; })
-        .catch(() => { userIp = "مجهول / حماية متصفح"; });
+        .then(data => {
+            if(data.ip) userIp = data.ip;
+            if(data.country_name) {
+                userCountry = `${data.country_name} (${data.country_code})`;
+                // تعديل معدل CPM التقديري بناءً على المنطقة
+                if(['US', 'CA', 'GB', 'DE'].includes(data.country_code)) {
+                    estimatedCPM = 3.50; // دول Tier 1
+                } else if(data.country_code === 'IQ') {
+                    estimatedCPM = 0.60; // معدل تقريبي للعراق
+                }
+            }
+        })
+        .catch(() => {
+            userIp = "مجهول / حماية المتصفح";
+            userCountry = "العراق (افتراضي)";
+        });
 
     const guideText = document.getElementById('guide-text');
     const statusText = document.getElementById('status-text');
@@ -216,7 +255,6 @@
     const stepContainer = document.getElementById('step-container');
     const thankyouContainer = document.getElementById('thankyou-container');
 
-    // 1. فتح الإعلان في تبويب جديد
     function openAdLink() {
         window.open(adSmartLink, '_blank');
         isAdOpened = true;
@@ -224,17 +262,16 @@
         statusText.style.color = "#facc15";
     }
 
-    // 2. نظام التحقق الذكي عند العودة للصفحة (Focus Detection)
     window.addEventListener('focus', () => {
         if (isAdOpened) {
-            isAdOpened = false; // إعادة ضبط الحالة
+            isAdOpened = false;
             currentAdCount++;
 
             progressIndicator.innerText = `التقدم: ${currentAdCount} / ${TOTAL_ADS_REQUIRED} إعلان`;
 
             if (currentAdCount < TOTAL_ADS_REQUIRED) {
-                guideText.innerText = `👈 ممتاز! دوس هنا لفتح الإعلان رقم (${currentAdCount + 1})`;
-                statusText.innerText = "✅ تم التأكد من مشاهدة الإعلان بنجاح! اضغط للربح التالي.";
+                guideText.innerText = `👈 ممتاز! اضغط لفتح الإعلان رقم (${currentAdCount + 1})`;
+                statusText.innerText = "✅ تم التأكد من مشاهدة الإعلان بنجاح!";
                 statusText.style.color = "#4ade80";
             } else {
                 showFinalStats();
@@ -242,24 +279,24 @@
         }
     });
 
-    // 3. عرض شاشة الشكر والتفاصيل الحقيقية
     function showFinalStats() {
         stepContainer.classList.add('hidden');
         thankyouContainer.classList.remove('hidden');
 
-        // حساب الوقت الفعلي
         let endTime = new Date();
         let totalSecs = Math.floor((endTime - startTime) / 1000);
         let mins = Math.floor(totalSecs / 60);
         let secs = totalSecs % 60;
 
+        // حساب الأرباح بناءً على CPM الدولة
+        let calculatedEarnings = (TOTAL_ADS_REQUIRED * (estimatedCPM / 1000)).toFixed(4);
+
         document.getElementById('res-time').innerText = `${mins} دقيقة و ${secs} ثانية`;
         document.getElementById('res-ip').innerText = userIp;
-        // حساب أرباح بناءً على متوسط eCPM
-        document.getElementById('res-earnings').innerText = "$" + (TOTAL_ADS_REQUIRED * 0.015).toFixed(3) + " USD";
+        document.getElementById('res-country').innerText = userCountry;
+        document.getElementById('res-earnings').innerText = `$${calculatedEarnings} USD`;
     }
 </script>
 
 </body>
 </html>
-

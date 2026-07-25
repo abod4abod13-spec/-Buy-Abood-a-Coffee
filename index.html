@@ -3,236 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الموقع التفاعلي المتكامل</title>
-
-    <!-- Tailwind CSS للتصميم العصري -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome للأيقونات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>تخطي الرابط - الوصول للمحتوى</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .fixed-banner-bottom { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; }
-        .fixed-banner-top { position: sticky; top: 0; z-index: 40; }
-        .ad-box { background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); }
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #818cf8;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --accent-color: #22c55e;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            padding: 30px;
+            width: 100%;
+            max-width: 480px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+        h1 {
+            font-size: 22px;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #94a3b8;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .timer-box {
+            font-size: 28px;
+            font-weight: bold;
+            color: #facc15;
+            margin: 15px 0;
+        }
+        .ad-area {
+            background: #334155;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--secondary-color);
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 0;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:disabled {
+            background-color: #475569;
+            cursor: not-allowed;
+        }
+        .progress-bar {
+            height: 6px;
+            background: #334155;
+            border-radius: 3px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.3s;
+        }
     </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen pb-24">
+<body>
 
-    <!-- 📢 إعلان بانر أعلى الصفحة (ثابت) -->
-    <div class="fixed-banner-top bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center py-2 px-4 shadow-lg flex justify-between items-center text-xs md:text-sm">
-        <span class="font-bold"><i class="fa-solid fa-bullhorn"></i> إعلان هام: استمتع بأفضل العروض اليوم!</span>
-        <button onclick="recordAdClick()" class="bg-white text-purple-700 px-3 py-1 rounded-full font-bold hover:bg-slate-200 transition">اضغط هنا</button>
+<div class="container">
+    <h1>جاري تجهيز الرابط النهائي</h1>
+    <p>يرجى الانتظار للحصول على رابط التنزيل/الانتقال</p>
+
+    <div class="timer-box" id="timer">10</div>
+
+    <div class="ad-area">
+        <!-- ضع شفرة الإعلان الإعلاني (Banner / Native) هنا -->
+        <span style="color: #cbd5e1; font-size: 13px;">[ مساحة إعلانية ]</span>
     </div>
 
-    <!-- 🌐 الشريط العلوي ومعلومات الدولة -->
-    <header class="max-w-6xl mx-auto p-4 flex justify-between items-center border-b border-slate-800">
-        <div class="flex items-center gap-3">
-            <span id="country-flag" class="text-3xl">🌐</span>
-            <div>
-                <h1 id="welcome-msg" class="font-bold text-lg">أهلاً بك!</h1>
-                <p id="user-location" class="text-xs text-slate-400">جاري تحديد موقعك...</p>
-            </div>
-        </div>
+    <button id="action-btn" class="btn" disabled onclick="nextStep()">انتظر العداد...</button>
 
-        <!-- اختيار اللغة يدوياً -->
-        <select id="lang-select" onchange="changeLanguage(this.value)" class="bg-slate-800 text-white text-sm p-2 rounded-lg border border-slate-700">
-            <option value="ar">العربية 🇸🇦</option>
-            <option value="en">English 🇺🇸</option>
-            <option value="es">Español 🇪🇸</option>
-        </select>
-    </header>
-
-    <main class="max-w-6xl mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-
-        <!-- 📊 لوحة الإحصائيات والأرباح -->
-        <section class="md:col-span-2 bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
-            <h2 id="stats-title" class="text-xl font-bold mb-4 border-b border-slate-700 pb-2">📊 إحصائيات نشاطك والأرباح</h2>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-                <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
-                    <i class="fa-solid fa-eye text-blue-400 text-2xl mb-1"></i>
-                    <p id="label-views" class="text-xs text-slate-400">الإعلانات المشاهدة</p>
-                    <span id="total-views" class="text-xl font-bold text-blue-400">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
-                    <i class="fa-solid fa-hand-pointer text-green-400 text-2xl mb-1"></i>
-                    <p id="label-clicks" class="text-xs text-slate-400">الضغطات</p>
-                    <span id="total-clicks" class="text-xl font-bold text-green-400">0</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
-                    <i class="fa-solid fa-sack-dollar text-yellow-400 text-2xl mb-1"></i>
-                    <p id="label-earnings" class="text-xs text-slate-400">المبلغ المكتسب</p>
-                    <span id="total-earnings" class="text-xl font-bold text-yellow-400">$0.000</span>
-                </div>
-                <div class="bg-slate-900 p-4 rounded-xl text-center border border-slate-700">
-                    <i class="fa-solid fa-rotate text-purple-400 text-2xl mb-1"></i>
-                    <p id="label-visits" class="text-xs text-slate-400">عدد زياراتك</p>
-                    <span id="total-visits" class="text-xl font-bold text-purple-400">1</span>
-                </div>
-            </div>
-
-            <!-- 🏅 شارة الصدارة -->
-            <div id="rank-badge" class="bg-emerald-900/40 border border-emerald-500 text-emerald-300 p-4 rounded-xl flex items-center gap-3">
-                <i class="fa-solid fa-trophy text-yellow-400 text-3xl"></i>
-                <div>
-                    <h3 id="rank-title" class="font-bold">أنت حالياً في المركز الأول! 🔥</h3>
-                    <p id="rank-desc" class="text-xs">أنت أكثر شخص مشاهدة للإعلانات في هذا الموقع اليوم.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- 📢 إعلان جانبي ثابت -->
-        <aside class="space-y-4">
-            <div onclick="recordAdClick()" class="ad-box cursor-pointer p-6 rounded-2xl text-slate-900 font-bold text-center shadow-lg hover:opacity-90 transition transform hover:scale-105">
-                <span class="bg-slate-900 text-white text-xs px-2 py-1 rounded mb-2 inline-block">إعلان مخصص</span>
-                <h3 class="text-lg">احصل على خصم 50% الآن!</h3>
-                <p class="text-xs font-normal mt-1">اضغط هنا للاستفادة من العرض الحصري.</p>
-            </div>
-
-            <div onclick="recordAdClick()" class="bg-gradient-to-br from-pink-500 to-rose-500 cursor-pointer p-6 rounded-2xl text-white font-bold text-center shadow-lg hover:opacity-90 transition transform hover:scale-105">
-                <span class="bg-white text-rose-600 text-xs px-2 py-1 rounded mb-2 inline-block">إعلان مميز</span>
-                <h3 class="text-lg">حمل التطبيق الجديد</h3>
-                <p class="text-xs font-normal mt-1">أسرع وأفضل تجربة للمستخدم.</p>
-            </div>
-        </aside>
-
-    </main>
-
-    <!-- 📢 إعلان أسفل الصفحة (ثابت) -->
-    <div class="fixed-banner-bottom bg-slate-800 border-t border-slate-700 p-3 text-center flex justify-between items-center px-6">
-        <div class="text-xs text-slate-300">
-            <span class="bg-yellow-500 text-slate-900 text-[10px] font-bold px-1.5 py-0.5 rounded mr-1">إعلان</span>
-            اشترك في النشرة البريدية وحصل على هدايا أسبوعية!
-        </div>
-        <button onclick="recordAdClick()" class="bg-emerald-500 text-slate-900 px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-emerald-400">انضم الآن</button>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
     </div>
+</div>
 
-    <!-- 📜 النص البرمجي (JavaScript) -->
-    <script>
-        // Dictionary for automatic language translation
-        const translations = {
-            ar: {
-                welcome: "أهلاً بك!",
-                statsTitle: "📊 إحصائيات نشاطك والأرباح",
-                views: "الإعلانات المشاهدة",
-                clicks: "الضغطات",
-                earnings: "المبلغ المكتسب",
-                visits: "عدد زياراتك",
-                rankTitle: "أنت حالياً في المركز الأول! 🔥",
-                rankDesc: "أنت أكثر شخص مشاهدة للإعلانات في هذا الموقع."
-            },
-            en: {
-                welcome: "Welcome!",
-                statsTitle: "📊 Your Activity & Earnings Stats",
-                views: "Ads Viewed",
-                clicks: "Clicks",
-                earnings: "Earned Amount",
-                visits: "Your Visits",
-                rankTitle: "You are currently #1! 🔥",
-                rankDesc: "You are the top ad viewer on this website."
-            },
-            es: {
-                welcome: "¡Bienvenido!",
-                statsTitle: "📊 Sus estadísticas de actividad y ganancias",
-                views: "Anuncios vistos",
-                clicks: "Clics",
-                earnings: "Monto ganado",
-                visits: "Tus visitas",
-                rankTitle: "¡Actualmente eres el #1! 🔥",
-                rankDesc: "Eres el principal إعلان viewer en este sitio web."
+<script>
+    // قائمة الروابط الإعلانية للمراحل
+    const steps = [
+        { adUrl: "https://example.com/ad1", label: "الانتقال إلى الخطوة التالية 🚀" },
+        { adUrl: "https://example.com/ad2", label: "الانتقال إلى الرابط النهائي 🔗" }
+    ];
+
+    let currentStep = 0;
+    let timeLeft = 10;
+    let timerId = null;
+
+    const timerEl = document.getElementById('timer');
+    const btnEl = document.getElementById('action-btn');
+    const progressEl = document.getElementById('progress');
+
+    function startTimer() {
+        timeLeft = 10;
+        btnEl.disabled = true;
+        btnEl.innerText = "انتظر العداد...";
+        timerEl.innerText = timeLeft;
+
+        timerId = setInterval(() => {
+            timeLeft--;
+            timerEl.innerText = timeLeft;
+
+            if (timeLeft <= 0) {
+                clearInterval(timerId);
+                timerEl.innerText = "جاهز!";
+                btnEl.disabled = false;
+                btnEl.innerText = steps[currentStep].label;
             }
-        };
+        }, 1000);
+    }
 
-        // Initialize state variables from localStorage
-        let stats = {
-            views: parseInt(localStorage.getItem('ad_views')) || 0,
-            clicks: parseInt(localStorage.getItem('ad_clicks')) || 0,
-            earnings: parseFloat(localStorage.getItem('ad_earnings')) || 0.000,
-            visits: (parseInt(localStorage.getItem('site_visits')) || 0) + 1
-        };
+    function nextStep() {
+        // فتح رابط الإعلان في تبويب جديد لتوليد الظهور والزيارة
+        window.open(steps[currentStep].adUrl, '_blank');
 
-        // Save visit count
-        localStorage.setItem('site_visits', stats.visits);
+        currentStep++;
+        let progressPercent = (currentStep / steps.length) * 100;
+        progressEl.style.width = progressPercent + "%";
 
-        // Update statistics on UI
-        function updateUI() {
-            document.getElementById('total-views').innerText = stats.views;
-            document.getElementById('total-clicks').innerText = stats.clicks;
-            document.getElementById('total-earnings').innerText = `$${stats.earnings.toFixed(3)}`;
-            document.getElementById('total-visits').innerText = stats.visits;
+        if (currentStep < steps.length) {
+            startTimer();
+        } else {
+            // توجيه للرابط النهائي بعد اتمام كافة المراحل
+            btnEl.innerText = "تم التوجيه بنجاح 🎉";
+            btnEl.disabled = true;
+            timerEl.innerText = "✓";
         }
+    }
 
-        // Record ad view
-        function recordAdView() {
-            stats.views++;
-            stats.earnings += 0.001; // $0.001 per view
-            localStorage.setItem('ad_views', stats.views);
-            localStorage.setItem('ad_earnings', stats.earnings);
-            updateUI();
-        }
+    // بدء العداد عند التحميل
+    startTimer();
+</script>
 
-        // Record ad click
-        function recordAdClick() {
-            stats.clicks++;
-            stats.earnings += 0.05; // $0.05 per click
-            localStorage.setItem('ad_clicks', stats.clicks);
-            localStorage.setItem('ad_earnings', stats.earnings);
-            updateUI();
-            alert("شكراً لتفاعلك! تم إضافة الأرباح إلى حسابك.");
-        }
-
-        // Geolocation and IP Info fetch
-        async function fetchUserData() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                const data = await response.json();
-                
-                // Display country flag and name
-                const flagUrl = `https://flagcdn.com/w40/${data.country_code.toLowerCase()}.png`;
-                document.getElementById('country-flag').innerHTML = `<img src="${flagUrl}" class="w-8 rounded" alt="Flag">`;
-                document.getElementById('user-location').innerText = `${data.city}, ${data.country_name}`;
-
-                // Auto-set language based on country code
-                if (['SA', 'EG', 'IQ', 'AE', 'KW', 'JO'].includes(data.country_code)) {
-                    changeLanguage('ar');
-                } else if (['ES', 'MX', 'AR'].includes(data.country_code)) {
-                    changeLanguage('es');
-                } else {
-                    changeLanguage('en');
-                }
-            } catch (error) {
-                document.getElementById('user-location').innerText = "الموقع: غير محدد";
-            }
-        }
-
-        // Language Change Handler
-        function changeLanguage(lang) {
-            document.getElementById('lang-select').value = lang;
-            const t = translations[lang] || translations['ar'];
-            
-            document.getElementById('welcome-msg').innerText = t.welcome;
-            document.getElementById('stats-title').innerText = t.statsTitle;
-            document.getElementById('label-views').innerText = t.views;
-            document.getElementById('label-clicks').innerText = t.clicks;
-            document.getElementById('label-earnings').innerText = t.earnings;
-            document.getElementById('label-visits').innerText = t.visits;
-            document.getElementById('rank-title').innerText = t.rankTitle;
-            document.getElementById('rank-desc').innerText = t.rankDesc;
-
-            // Change page text direction
-            document.dir = lang === 'ar' ? 'rtl' : 'ltr';
-        }
-
-        // Simulate Ad Impression scanning every 10 seconds
-        setInterval(() => {
-            recordAdView();
-        }, 10000);
-
-        // Initial launch
-        updateUI();
-        fetchUserData();
-        recordAdView(); // First view on load
-    </script>
 </body>
 </html>
+

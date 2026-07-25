@@ -3,172 +3,300 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تخطي الرابط - الوصول للمحتوى</title>
+    <title>منصة دعم عبدالله | Abood Ad Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4f46e5;
-            --secondary-color: #818cf8;
+            --primary: #4f46e5;
+            --secondary: #818cf8;
             --bg-color: #0f172a;
             --card-bg: #1e293b;
             --text-color: #f8fafc;
-            --accent-color: #22c55e;
+            --accent: #22c55e;
+            --warning: #facc15;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); min-height: 100vh; padding-bottom: 90px; }
+
+        .top-notification-ad {
+            background: linear-gradient(90deg, #312e81, #1e1b4b);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 14px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .main-wrapper {
+            max-width: 600px;
+            margin: 20px auto;
             padding: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
+
         .container {
             background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 30px;
-            width: 100%;
-            max-width: 480px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        h1 {
-            font-size: 22px;
-            color: #e2e8f0;
-            margin-bottom: 10px;
+
+        h1 { font-size: 22px; color: #e2e8f0; margin-bottom: 8px; }
+        p.sub-title { color: #94a3b8; font-size: 13px; margin-bottom: 20px; }
+
+        .guide-box {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--warning);
+            margin: 15px 0;
+            animation: bounce 1s infinite alternate;
         }
-        p {
-            color: #94a3b8;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .timer-box {
-            font-size: 28px;
-            font-weight: bold;
-            color: #facc15;
+
+        @keyframes bounce { 0% { transform: translateY(0); } 100% { transform: translateY(-8px); } }
+
+        .ad-action-card {
+            background: #334155;
+            border-radius: 14px;
+            padding: 20px;
+            border: 2px dashed var(--secondary);
             margin: 15px 0;
         }
-        .ad-area {
-            background: #334155;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed var(--secondary-color);
-        }
-        .btn {
-            display: block;
-            width: 100%;
-            background-color: var(--primary-color);
+
+        .btn-ad {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), #4338ca);
             color: white;
-            padding: 14px 0;
-            border-radius: 8px;
+            padding: 14px 28px;
+            border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
-            border: none;
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
             cursor: pointer;
-            transition: background 0.3s;
+            border: none;
         }
-        .btn:disabled {
-            background-color: #475569;
-            cursor: not-allowed;
+
+        .status-msg { margin-top: 10px; font-size: 13px; color: #94a3b8; }
+
+        .banner-container {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 60px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 8px;
         }
-        .progress-bar {
-            height: 6px;
-            background: #334155;
-            border-radius: 3px;
+
+        .stats-box {
+            background: #1e1b4b;
+            border: 1px solid #312e81;
+            border-radius: 14px;
+            padding: 20px;
+            text-align: right;
             margin-top: 15px;
-            overflow: hidden;
         }
-        .progress-fill {
-            height: 100%;
-            background: var(--accent-color);
-            width: 0%;
-            transition: width 0.3s;
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 12px 0;
+            font-size: 14px;
+            border-bottom: 1px dashed rgba(255,255,255,0.1);
+            padding-bottom: 8px;
+        }
+
+        .stat-label { color: #cbd5e1; }
+        .stat-value { color: var(--accent); font-weight: bold; }
+
+        .hidden { display: none !important; }
+
+        .fixed-bottom-ad {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
+            background: #0f172a;
+            border-top: 1px solid var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>جاري تجهيز الرابط النهائي</h1>
-    <p>يرجى الانتظار للحصول على رابط التنزيل/الانتقال</p>
-
-    <div class="timer-box" id="timer">10</div>
-
-    <div class="ad-area">
-        <!-- ضع شفرة الإعلان الإعلاني (Banner / Native) هنا -->
-        <span style="color: #cbd5e1; font-size: 13px;">[ مساحة إعلانية ]</span>
+    <div class="top-notification-ad">
+        ⚡ منصة دعم عبدالله المباشرة - شاهد الإعلانات لدعم استمرار المشاريع
     </div>
 
-    <button id="action-btn" class="btn" disabled onclick="nextStep()">انتظر العداد...</button>
+    <div class="main-wrapper">
+        <div class="container">
+            <h1>🚀 دعم موقع عبدالله المباشر</h1>
+            <p class="sub-title">إكمال 60 إعلاناً يضمن أعلى نسبة دعم وتطوير للموقع!</p>
 
-    <div class="progress-bar">
-        <div class="progress-fill" id="progress"></div>
+            <!-- بانر إعلاني علوي إضافي داخل الصفحة -->
+            <div class="banner-container">
+                <script type="text/javascript">
+                    atOptions = {
+                        'key' : '19caa55cbb03df3ad1f2030dd6449b8f',
+                        'format' : 'iframe',
+                        'height' : 60,
+                        'width' : 468,
+                        'params' : {}
+                    };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/19caa55cbb03df3ad1f2030dd6449b8f/invoke.js"></script>
+            </div>
+
+            <!-- مرحلة عرض الإعلانات -->
+            <div id="step-container">
+                <div class="guide-box" id="guide-text">👈 اضغط هنا لفتح الإعلان الأول</div>
+                
+                <div class="ad-action-card">
+                    <button id="ad-btn" class="btn-ad" onclick="openAdLink()">فتح الإعلان الآن 🚀</button>
+                    <div class="status-msg" id="status-text">في انتظار فتح الإعلان والعودة للصفحة...</div>
+                </div>
+
+                <div style="font-size: 14px; font-weight: bold; color: var(--secondary);" id="progress-indicator">
+                    التقدم: 0 / 60 إعلان
+                </div>
+            </div>
+
+            <!-- شاشة الانتهاء والإحصائيات -->
+            <div id="thankyou-container" class="hidden">
+                <div class="stats-box">
+                    <h3 style="color: var(--accent); text-align: center; margin-bottom: 15px;">🎉 أسطورة! أكملت كافة الإعلانات الـ 60 بنجاح</h3>
+                    
+                    <div class="stat-item">
+                        <span class="stat-label">عدد الإعلانات المؤكدة:</span>
+                        <span class="stat-value" id="res-ads-count">60 / 60</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">الدولة المستهدفة:</span>
+                        <span class="stat-value" id="res-country">جاري التعرف...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">الأرباح التقديرية (بناءً على CPM المنطقة):</span>
+                        <span class="stat-value" id="res-earnings">جاري الحساب...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">الوقت الذي قضيته:</span>
+                        <span class="stat-value" id="res-time">جاري الحساب...</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">عنوان الـ IP:</span>
+                        <span class="stat-value" id="res-ip">جاري الجلب...</span>
+                    </div>
+                </div>
+
+                <p style="color: var(--warning); font-size: 13px; margin-top: 15px; line-height: 1.6;">
+                    💡 شكراً لدعمك المستمر! قم بإعادة تحديث الصفحة في وقت لاحق لدعم المزيد من المشاريع.
+                </p>
+            </div>
+        </div>
     </div>
-</div>
+
+    <!-- إعلان بانر أسفل الشاشة ثابت -->
+    <div class="fixed-bottom-ad">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '19caa55cbb03df3ad1f2030dd6449b8f',
+            'format' : 'iframe',
+            'height' : 50,
+            'width' : 320,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="https://www.highperformanceformat.com/19caa55cbb03df3ad1f2030dd6449b8f/invoke.js"></script>
+    </div>
+
+    <!-- شفرة الإعلانات المنبثقة للـ Popunder -->
+    <script src="https://pl30519627.effectivecpmnetwork.com/e5/c5/09/e5c5094060e8c40141765dba41971b4d.js"></script>
 
 <script>
-    // قائمة الروابط الإعلانية للمراحل
-    const steps = [
-        { adUrl: "https://example.com/ad1", label: "الانتقال إلى الخطوة التالية 🚀" },
-        { adUrl: "https://example.com/ad2", label: "الانتقال إلى الرابط النهائي 🔗" }
-    ];
+    const TOTAL_ADS_REQUIRED = 60; // تعديل العدد إلى 60
+    let currentAdCount = 0;
+    let isAdOpened = false;
+    let startTime = new Date();
+    let userIp = "مجهول";
+    let userCountry = "العراق (IQ)";
+    let estimatedCPM = 0.80; // متوسط الـ eCPM لدول الشرق الأوسط
 
-    let currentStep = 0;
-    let timeLeft = 10;
-    let timerId = null;
+    const adSmartLink = "https://www.effectivecpmnetwork.com/v211a62503?key=e4a8339043403ab9de463236f63f9f52";
 
-    const timerEl = document.getElementById('timer');
-    const btnEl = document.getElementById('action-btn');
-    const progressEl = document.getElementById('progress');
-
-    function startTimer() {
-        timeLeft = 10;
-        btnEl.disabled = true;
-        btnEl.innerText = "انتظر العداد...";
-        timerEl.innerText = timeLeft;
-
-        timerId = setInterval(() => {
-            timeLeft--;
-            timerEl.innerText = timeLeft;
-
-            if (timeLeft <= 0) {
-                clearInterval(timerId);
-                timerEl.innerText = "جاهز!";
-                btnEl.disabled = false;
-                btnEl.innerText = steps[currentStep].label;
+    // جلب الـ IP والدولة تلقائياً
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            if(data.ip) userIp = data.ip;
+            if(data.country_name) {
+                userCountry = `${data.country_name} (${data.country_code})`;
+                // تعديل معدل CPM التقديري بناءً على المنطقة
+                if(['US', 'CA', 'GB', 'DE'].includes(data.country_code)) {
+                    estimatedCPM = 3.50; // دول Tier 1
+                } else if(data.country_code === 'IQ') {
+                    estimatedCPM = 0.60; // معدل تقريبي للعراق
+                }
             }
-        }, 1000);
+        })
+        .catch(() => {
+            userIp = "مجهول / حماية المتصفح";
+            userCountry = "العراق (افتراضي)";
+        });
+
+    const guideText = document.getElementById('guide-text');
+    const statusText = document.getElementById('status-text');
+    const progressIndicator = document.getElementById('progress-indicator');
+    const stepContainer = document.getElementById('step-container');
+    const thankyouContainer = document.getElementById('thankyou-container');
+
+    function openAdLink() {
+        window.open(adSmartLink, '_blank');
+        isAdOpened = true;
+        statusText.innerHTML = "⏳ تم فتح الإعلان! ارجع لهذه الصفحة الآن لإكمال التحقق...";
+        statusText.style.color = "#facc15";
     }
 
-    function nextStep() {
-        // فتح رابط الإعلان في تبويب جديد لتوليد الظهور والزيارة
-        window.open(steps[currentStep].adUrl, '_blank');
+    window.addEventListener('focus', () => {
+        if (isAdOpened) {
+            isAdOpened = false;
+            currentAdCount++;
 
-        currentStep++;
-        let progressPercent = (currentStep / steps.length) * 100;
-        progressEl.style.width = progressPercent + "%";
+            progressIndicator.innerText = `التقدم: ${currentAdCount} / ${TOTAL_ADS_REQUIRED} إعلان`;
 
-        if (currentStep < steps.length) {
-            startTimer();
-        } else {
-            // توجيه للرابط النهائي بعد اتمام كافة المراحل
-            btnEl.innerText = "تم التوجيه بنجاح 🎉";
-            btnEl.disabled = true;
-            timerEl.innerText = "✓";
+            if (currentAdCount < TOTAL_ADS_REQUIRED) {
+                guideText.innerText = `👈 ممتاز! اضغط لفتح الإعلان رقم (${currentAdCount + 1})`;
+                statusText.innerText = "✅ تم التأكد من مشاهدة الإعلان بنجاح!";
+                statusText.style.color = "#4ade80";
+            } else {
+                showFinalStats();
+            }
         }
-    }
+    });
 
-    // بدء العداد عند التحميل
-    startTimer();
+    function showFinalStats() {
+        stepContainer.classList.add('hidden');
+        thankyouContainer.classList.remove('hidden');
+
+        let endTime = new Date();
+        let totalSecs = Math.floor((endTime - startTime) / 1000);
+        let mins = Math.floor(totalSecs / 60);
+        let secs = totalSecs % 60;
+
+        // حساب الأرباح بناءً على CPM الدولة
+        let calculatedEarnings = (TOTAL_ADS_REQUIRED * (estimatedCPM / 1000)).toFixed(4);
+
+        document.getElementById('res-time').innerText = `${mins} دقيقة و ${secs} ثانية`;
+        document.getElementById('res-ip').innerText = userIp;
+        document.getElementById('res-country').innerText = userCountry;
+        document.getElementById('res-earnings').innerText = `$${calculatedEarnings} USD`;
+    }
 </script>
 
 </body>
 </html>
-
